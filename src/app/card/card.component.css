@@ -1,0 +1,10 @@
+.card-custom{
+  display: inline-block;
+  margin-top: 1vmax;
+  width: 100%;
+}
+.card-padding{
+  display: inline-block;
+  padding-left: 0.5vmax;
+  padding-right: 0.5vmax;
+}
