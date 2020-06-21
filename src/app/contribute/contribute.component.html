@@ -1,0 +1,47 @@
+<br>
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="department">Department</label>
+      <select id="department" class="form-control" (change)="onDeptChange()" [disabled]="!department_loaded">
+        <option value="Unknown" selected>Select Department</option>
+        <option *ngFor="let department of department_list" value="{{department.department_name}}">{{department.department_name}}</option>
+      </select>
+      <small id="" class="form-text text-muted">Not listed? <a routerLink='add-department'>Add Department</a></small>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="class">Class</label>
+      <select id="class" class="form-control" [disabled]="loading_department">
+        <option value="" selected>Choose Class</option>
+        <option *ngFor="let class of class_list">{{class.class_name}}</option>
+      </select>
+      <small id="" class="form-text text-muted">Not listed? <a routerLink='add-class'>Add Class</a></small>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="question_paper_code">Question Paper Code</label>
+      <input type="text" class="form-control text-uppercase" id="question_paper_code" pattern="abc">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+    <div class="custom-file">
+      <label class="custom-file-label" for="customFile">{{file_label}}</label>
+      <input type="file" required class="custom-file-input" id="paperFile" (change)="onFileChange($event)">
+      <h5 *ngIf="file_not_selected" ><small id="" class="form-text text-danger">Please select a file first.</small></h5>
+    </div>
+  </div>
+  </div>
+  <div class="form-row" *ngIf="percentUploaded!='0%'">
+    <div class="form-group col-md-6">
+      <div class="meter">
+        <span [style.width]="percentUploaded" class="text-center text-white">{{percentUploaded}}</span>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="uploadFile($event)">{{submit}}</button>
+</form>
+

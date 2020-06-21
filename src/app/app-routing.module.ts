@@ -6,6 +6,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { SuperAdminComponent } from './super-admin/super-admin.component';
+import { ContributeComponent } from './contribute/contribute.component';
+import { AddDepartmentComponent } from './add-department/add-department.component';
+import { AddClassComponent } from './add-class/add-class.component';
 
 
 const routes: Routes = [
@@ -28,6 +31,18 @@ const routes: Routes = [
   {
     path: 'super-admin',
     component: SuperAdminComponent
+  },
+  {
+    path: 'contribute',
+    component: ContributeComponent
+  },
+  {
+    path: 'contribute/add-department',
+    component: AddDepartmentComponent
+  },
+  {
+    path: 'contribute/add-class',
+    component: AddClassComponent
   },
   {
     path: '**',

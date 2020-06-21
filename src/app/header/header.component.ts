@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  classes : any;
+
+  constructor(http : HttpClient) {
+    http.get('https://apex.oracle.com/pls/apex/honeyyadav/igumeerpur/class/')
+      .subscribe((response : any)=>{
+        this.classes = response.items;
+        console.log(this.classes);        
+      })
+  }
 
   ngOnInit(): void {
   }

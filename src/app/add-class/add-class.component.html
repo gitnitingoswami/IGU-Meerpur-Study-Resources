@@ -1,0 +1,25 @@
+<br>
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="department">Department</label>
+      <select id="department" class="form-control" [disabled]="department_loaded">
+        <option value="Unknown" selected>Choose Department</option>
+        <option *ngFor="let department of department_list">{{department.department_name}}</option>
+      </select>
+      <small id="" class="form-text text-muted">Not listed? <a href="" routerLink='/contribute/add-department'>Add Department</a></small>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="class_name">Class Name</label>
+      <input [(ngModel)]="class_name" (focus)="setClassNameError('none')" name="class_name" type="text" class="form-control" id="class_name" placeholder="Class Name">
+      <h5 *ngIf="class_name_error=='empty'" ><small id="" class="form-text text-danger">Please enter class name.</small></h5>
+      <h5 *ngIf="class_name_error=='success'" ><small id="" class="form-text text-success">Class added successfully.</small></h5>
+      <h5 *ngIf="class_name_error=='already_exists'" ><small id="" class="form-text text-warning">Class already exists.</small></h5>
+      <h5 *ngIf="class_name_error=='error'" ><small id="" class="form-text text-danger">Some error occured. Try later.</small></h5>
+      <span *ngIf="class_name_error=='loading'" class="loading"></span>
+    </div>
+  </div>
+  <button type="submit" (click)="addClass($event)" class="btn btn-primary">Add</button>
+</form>
